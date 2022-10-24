@@ -15,6 +15,7 @@
 		CCBFA4FA290594B600E968D6 /* TaskListController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCBFA4F9290594B600E968D6 /* TaskListController.swift */; };
 		CCBFA4FD290595DE00E968D6 /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCBFA4FC290595DE00E968D6 /* Task.swift */; };
 		CCBFA4FF290596D000E968D6 /* TasksStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCBFA4FE290596D000E968D6 /* TasksStorage.swift */; };
+		CCBFA5032906987C00E968D6 /* TaskCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCBFA5022906987C00E968D6 /* TaskCell.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -28,6 +29,7 @@
 		CCBFA4F9290594B600E968D6 /* TaskListController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskListController.swift; sourceTree = "<group>"; };
 		CCBFA4FC290595DE00E968D6 /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
 		CCBFA4FE290596D000E968D6 /* TasksStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksStorage.swift; sourceTree = "<group>"; };
+		CCBFA5022906987C00E968D6 /* TaskCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -44,6 +46,7 @@
 		CC74DEA92905919500AE0709 = {
 			isa = PBXGroup;
 			children = (
+				CCBFA5002906983300E968D6 /* View */,
 				CCBFA4FB290595CE00E968D6 /* Model */,
 				CC74DEB42905919500AE0709 /* To-Do Manager */,
 				CC74DEB32905919500AE0709 /* Products */,
@@ -79,6 +82,22 @@
 				CCBFA4FE290596D000E968D6 /* TasksStorage.swift */,
 			);
 			path = Model;
+			sourceTree = "<group>";
+		};
+		CCBFA5002906983300E968D6 /* View */ = {
+			isa = PBXGroup;
+			children = (
+				CCBFA5012906983C00E968D6 /* Cell */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		CCBFA5012906983C00E968D6 /* Cell */ = {
+			isa = PBXGroup;
+			children = (
+				CCBFA5022906987C00E968D6 /* TaskCell.swift */,
+			);
+			path = Cell;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -156,6 +175,7 @@
 				CC74DEB62905919500AE0709 /* AppDelegate.swift in Sources */,
 				CCBFA4FF290596D000E968D6 /* TasksStorage.swift in Sources */,
 				CC74DEB82905919500AE0709 /* SceneDelegate.swift in Sources */,
+				CCBFA5032906987C00E968D6 /* TaskCell.swift in Sources */,
 				CCBFA4FA290594B600E968D6 /* TaskListController.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -307,7 +327,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "To-Do Manager/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
@@ -335,7 +355,7 @@
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_FILE = "To-Do Manager/Info.plist";
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
-				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen;
+				INFOPLIST_KEY_UILaunchStoryboardName = LaunchScreen.storyboard;
 				INFOPLIST_KEY_UIMainStoryboardFile = Main;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";

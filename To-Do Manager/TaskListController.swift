@@ -19,6 +19,7 @@ class TaskListController: UITableViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         loadTasks()
+        navigationItem.rightBarButtonItem = editButtonItem
 
         // Uncomment the following line to preserve selection between presentations
         // self.clearsSelectionOnViewWillAppear = false
@@ -130,6 +131,21 @@ class TaskListController: UITableViewController {
         tableView.reloadSections(IndexSet(arrayLiteral: indexPath.section), with: .automatic)
     }
 
+    override func tableView(_ tableView: UITableView, leadingSwipeActionsConfigurationForRowAt indexPath: IndexPath) -> UISwipeActionsConfiguration? {
+        let taskType = sectionsTypesPosition[indexPath.section]
+        guard let _ = tasks[taskType]?[indexPath.row] else {
+            return nil
+        }
+        guard tasks[taskType]![indexPath.row].status == .completed else {
+            return nil
+        }
+        let actionSwipeInstance = UIContextualAction(style: .normal, title: "Не выполнена") { _,_,_ in
+            self.tasks[taskType]![indexPath.row].status = .planned
+            self.tableView.reloadSections(IndexSet(arrayLiteral: indexPath.section), with: .automatic)
+        }
+        return UISwipeActionsConfiguration(actions: [actionSwipeInstance])
+    }
+
     /*
     // Override to support conditional editing of the table view.
     override func tableView(_ tableView: UITableView, canEditRowAt indexPath: IndexPath) -> Bool {
@@ -138,17 +154,17 @@ class TaskListController: UITableViewController {
     }
     */
 
-    /*
-    // Override to support editing the table view.
+
     override func tableView(_ tableView: UITableView, commit editingStyle: UITableViewCell.EditingStyle, forRowAt indexPath: IndexPath) {
         if editingStyle == .delete {
-            // Delete the row from the data source
-            tableView.deleteRows(at: [indexPath], with: .fade)
+            let taskType = sectionsTypesPosition[indexPath.section]
+            tasks[taskType]?.remove(at: indexPath.row)
+            tableView.deleteRows(at: [indexPath], with: .automatic)
         } else if editingStyle == .insert {
             // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
         }    
     }
-    */
+
 
     /*
     // Override to support rearranging the table view.

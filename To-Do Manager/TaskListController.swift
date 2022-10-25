@@ -2,7 +2,17 @@ import UIKit
 
 class TaskListController: UITableViewController {
     var tasksStorage: TasksStorageProtocol = TasksStorage()
-    var tasks: [TaskPriority:[TaskProtocol]] = [:]
+    var tasks: [TaskPriority:[TaskProtocol]] = [:] {
+        didSet {
+            for (tasksGroupPriority, tasksGroup) in tasks {
+                tasks[tasksGroupPriority] = tasksGroup.sorted { task1, task2 in
+                    let task1position = tasksStatusPosition.firstIndex(of: task1.status) ?? 0
+                    let task2position = tasksStatusPosition.firstIndex(of: task2.status) ?? 0
+                    return task1position < task2position
+                }
+            }
+        }
+    }
     var sectionsTypesPosition: [TaskPriority] = [.important, .normal]
     var tasksStatusPosition: [TaskStatus] = [.completed, .planned]
 
@@ -23,14 +33,6 @@ class TaskListController: UITableViewController {
         }
         tasksStorage.loadTasks().forEach { task in
             tasks[task.type]?.append(task)
-        }
-
-        for (tasksGroupPriority, tasksGroup) in tasks {
-            tasks[tasksGroupPriority] = tasksGroup.sorted { task1, task2 in
-                let task1position = tasksStatusPosition.firstIndex(of: task1.status) ?? 0
-                let task2position = tasksStatusPosition.firstIndex(of: task2.status) ?? 0
-                return task1position < task2position
-            }
         }
     }
 
@@ -73,6 +75,25 @@ class TaskListController: UITableViewController {
         return cell
     }
 
+//    private func getConfiguredTaskCell_stack(for indexPath: IndexPath) -> UITableViewCell {
+//        let cell = tableView.dequeueReusableCell(withIdentifier: "taskCellStack", for: indexPath) as! TaskCell
+//        let taskType = sectionsTypesPosition[indexPath.section]
+//        guard let currentTask = tasks[taskType]?[indexPath.row] else {
+//            return cell
+//        }
+//        cell.symbol.text = getSymbolForTask(with: currentTask.status)
+//        cell.title.text = currentTask.title
+//
+//        if currentTask.status == .planned {
+//            cell.title.textColor = .black
+//            cell.symbol.textColor = .black
+//        } else {
+//            cell.title.textColor = .lightGray
+//            cell.symbol.textColor = .lightGray
+//        }
+//        return cell
+//    }
+
     private func getSymbolForTask(with status: TaskStatus) -> String {
         var resultSymbol: String
         if status == .planned {
@@ -94,6 +115,19 @@ class TaskListController: UITableViewController {
             title = "Текущие"
         }
         return title
+    }
+
+    override func tableView(_ tableView: UITableView, didSelectRowAt indexPath: IndexPath) {
+        let taskType = sectionsTypesPosition[indexPath.section]
+        guard let _ = tasks[taskType]?[indexPath.row] else {
+            return
+        }
+        guard tasks[taskType]![indexPath.row].status == .planned else {
+            tableView.deselectRow(at: indexPath, animated: true)
+            return
+        }
+        tasks[taskType]![indexPath.row].status = .completed
+        tableView.reloadSections(IndexSet(arrayLiteral: indexPath.section), with: .automatic)
     }
 
     /*

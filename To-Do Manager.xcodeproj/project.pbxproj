@@ -16,6 +16,10 @@
 		CCBFA4FD290595DE00E968D6 /* Task.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCBFA4FC290595DE00E968D6 /* Task.swift */; };
 		CCBFA4FF290596D000E968D6 /* TasksStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCBFA4FE290596D000E968D6 /* TasksStorage.swift */; };
 		CCBFA5032906987C00E968D6 /* TaskCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCBFA5022906987C00E968D6 /* TaskCell.swift */; };
+		CCDD977D2909633500AA3EB6 /* TaskEditController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCDD977C2909633500AA3EB6 /* TaskEditController.swift */; };
+		CCDD977F29097E0E00AA3EB6 /* TaskTypeController.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCDD977E29097E0E00AA3EB6 /* TaskTypeController.swift */; };
+		CCDD978229097F6A00AA3EB6 /* TaskTypeCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = CCDD978029097F6A00AA3EB6 /* TaskTypeCell.swift */; };
+		CCDD978329097F6A00AA3EB6 /* TaskTypeCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = CCDD978129097F6A00AA3EB6 /* TaskTypeCell.xib */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -30,6 +34,10 @@
 		CCBFA4FC290595DE00E968D6 /* Task.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Task.swift; sourceTree = "<group>"; };
 		CCBFA4FE290596D000E968D6 /* TasksStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TasksStorage.swift; sourceTree = "<group>"; };
 		CCBFA5022906987C00E968D6 /* TaskCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskCell.swift; sourceTree = "<group>"; };
+		CCDD977C2909633500AA3EB6 /* TaskEditController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskEditController.swift; sourceTree = "<group>"; };
+		CCDD977E29097E0E00AA3EB6 /* TaskTypeController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskTypeController.swift; sourceTree = "<group>"; };
+		CCDD978029097F6A00AA3EB6 /* TaskTypeCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TaskTypeCell.swift; sourceTree = "<group>"; };
+		CCDD978129097F6A00AA3EB6 /* TaskTypeCell.xib */ = {isa = PBXFileReference; lastKnownFileType = file.xib; path = TaskTypeCell.xib; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -71,6 +79,8 @@
 				CC74DEC02905919600AE0709 /* LaunchScreen.storyboard */,
 				CC74DEC32905919600AE0709 /* Info.plist */,
 				CCBFA4F9290594B600E968D6 /* TaskListController.swift */,
+				CCDD977C2909633500AA3EB6 /* TaskEditController.swift */,
+				CCDD977E29097E0E00AA3EB6 /* TaskTypeController.swift */,
 			);
 			path = "To-Do Manager";
 			sourceTree = "<group>";
@@ -96,6 +106,8 @@
 			isa = PBXGroup;
 			children = (
 				CCBFA5022906987C00E968D6 /* TaskCell.swift */,
+				CCDD978029097F6A00AA3EB6 /* TaskTypeCell.swift */,
+				CCDD978129097F6A00AA3EB6 /* TaskTypeCell.xib */,
 			);
 			path = Cell;
 			sourceTree = "<group>";
@@ -160,6 +172,7 @@
 			files = (
 				CC74DEC22905919600AE0709 /* LaunchScreen.storyboard in Resources */,
 				CC74DEBF2905919600AE0709 /* Assets.xcassets in Resources */,
+				CCDD978329097F6A00AA3EB6 /* TaskTypeCell.xib in Resources */,
 				CC74DEBD2905919500AE0709 /* Main.storyboard in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
@@ -175,8 +188,11 @@
 				CC74DEB62905919500AE0709 /* AppDelegate.swift in Sources */,
 				CCBFA4FF290596D000E968D6 /* TasksStorage.swift in Sources */,
 				CC74DEB82905919500AE0709 /* SceneDelegate.swift in Sources */,
+				CCDD977F29097E0E00AA3EB6 /* TaskTypeController.swift in Sources */,
 				CCBFA5032906987C00E968D6 /* TaskCell.swift in Sources */,
 				CCBFA4FA290594B600E968D6 /* TaskListController.swift in Sources */,
+				CCDD977D2909633500AA3EB6 /* TaskEditController.swift in Sources */,
+				CCDD978229097F6A00AA3EB6 /* TaskTypeCell.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

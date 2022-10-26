@@ -11,6 +11,11 @@ class TaskListController: UITableViewController {
                     return task1position < task2position
                 }
             }
+            var savingArray: [TaskProtocol] = []
+            tasks.forEach { key, value in
+                savingArray += value
+            }
+            tasksStorage.saveTasks(savingArray)
         }
     }
     var sectionsTypesPosition: [TaskPriority] = [.important, .normal]
@@ -18,7 +23,6 @@ class TaskListController: UITableViewController {
 
     override func viewDidLoad() {
         super.viewDidLoad()
-        loadTasks()
         navigationItem.leftBarButtonItem = editButtonItem
 
         // Uncomment the following line to preserve selection between presentations
@@ -33,6 +37,15 @@ class TaskListController: UITableViewController {
             tasks[taskType] = []
         }
         tasksStorage.loadTasks().forEach { task in
+            tasks[task.type]?.append(task)
+        }
+    }
+
+    func setTasks(_ tasksCollection: [TaskProtocol]) {
+        sectionsTypesPosition.forEach { taskType in
+            tasks[taskType] = []
+        }
+        tasksCollection.forEach { task in
             tasks[task.type]?.append(task)
         }
     }

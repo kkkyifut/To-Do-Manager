@@ -165,13 +165,19 @@ class TaskListController: UITableViewController {
         }    
     }
 
-
-    /*
-    // Override to support rearranging the table view.
-    override func tableView(_ tableView: UITableView, moveRowAt fromIndexPath: IndexPath, to: IndexPath) {
-
+    override func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {
+        let taskTypeFrom = sectionsTypesPosition[sourceIndexPath.section]
+        let taskTypeTo = sectionsTypesPosition[destinationIndexPath.section]
+        guard let movedTask = tasks[taskTypeFrom]?[sourceIndexPath.row] else {
+            return
+        }
+        tasks[taskTypeFrom]!.remove(at: sourceIndexPath.row)
+        tasks[taskTypeTo]!.insert(movedTask, at: destinationIndexPath.row)
+        if taskTypeFrom != taskTypeTo {
+            tasks[taskTypeTo]![destinationIndexPath.row].type = taskTypeTo
+        }
+        tableView.reloadData()
     }
-    */
 
     /*
     // Override to support conditional rearranging of the table view.

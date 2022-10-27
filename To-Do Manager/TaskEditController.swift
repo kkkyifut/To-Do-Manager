@@ -16,11 +16,22 @@ class TaskEditController: UITableViewController {
     @IBOutlet var taskStatusSwitch: UISwitch!
 
     @IBAction func saveTask(_ sender: UIBarButtonItem) {
-        let title = taskTitle?.text ?? ""
-        let type = taskType
-        let status: TaskStatus = taskStatusSwitch.isOn ? .completed : .planned
-        doAfterEdit?(title, type, status)
-        navigationController?.popViewController(animated: true)
+        let title = (taskTitle?.text ?? "").trimmingCharacters(in: .whitespaces)
+        if title.isEmpty {
+            let alertController = UIAlertController(
+                title: "Ошибка",
+                message: "Введите описание задачи",
+                preferredStyle: .alert)
+            let confirmAction = UIAlertAction(
+                title: "Повторить", style: .default, handler: nil)
+            alertController.addAction(confirmAction)
+            present(alertController, animated: true, completion: nil)
+        } else {
+            let type = taskType
+            let status: TaskStatus = taskStatusSwitch.isOn ? .completed : .planned
+            doAfterEdit?(title, type, status)
+            navigationController?.popViewController(animated: true)
+        }
     }
 
     override func viewDidLoad() {

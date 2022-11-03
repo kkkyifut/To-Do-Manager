@@ -21,6 +21,8 @@ class TaskListController: UITableViewController {
     var sectionsTypesPosition: [TaskPriority] = [.important, .normal]
     var tasksStatusPosition: [TaskStatus] = [.completed, .planned]
 
+    @IBOutlet var taskListLabel: UILabel!
+
     override func viewDidLoad() {
         super.viewDidLoad()
         navigationItem.leftBarButtonItem = editButtonItem
@@ -54,6 +56,11 @@ class TaskListController: UITableViewController {
         let taskType = sectionsTypesPosition[section]
         guard let currentTasksType = tasks[taskType] else {
             return 0
+        }
+        if tasks[.important]?.count == 0 && tasks[.normal]?.count == 0 {
+            self.taskListLabel.text = "Задачи отсутствуют"
+        } else {
+            self.taskListLabel.text = ""
         }
         return currentTasksType.count
     }

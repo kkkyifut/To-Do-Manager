@@ -18,7 +18,7 @@ class TaskListController: UITableViewController {
             tasksStorage.saveTasks(savingArray)
         }
     }
-    var sectionsTypesPosition: [TaskPriority] = [.important, .normal]
+    var sectionsTypesPosition: [TaskPriority] = [.important, .normal, .backlog]
     var tasksStatusPosition: [TaskStatus] = [.completed, .planned]
 
     @IBOutlet var taskListLabel: UILabel!
@@ -57,7 +57,7 @@ class TaskListController: UITableViewController {
         guard let currentTasksType = tasks[taskType] else {
             return 0
         }
-        if tasks[.important]?.count == 0 && tasks[.normal]?.count == 0 {
+        if tasks[.important]?.count == 0 && tasks[.normal]?.count == 0 && tasks[.backlog]?.count == 0 {
             self.taskListLabel.text = "Задачи отсутствуют"
         } else {
             self.taskListLabel.text = ""
@@ -128,6 +128,8 @@ class TaskListController: UITableViewController {
             title = "Важные"
         } else if tasksType == .normal {
             title = "Текущие"
+        } else if tasksType == .backlog {
+            title = "Общие"
         }
         return title
     }
@@ -182,8 +184,8 @@ class TaskListController: UITableViewController {
             tasks[taskType]?.remove(at: indexPath.row)
             tableView.deleteRows(at: [indexPath], with: .automatic)
         } else if editingStyle == .insert {
-            // Create a new instance of the appropriate class, insert it into the array, and add a new row to the table view
-        }    
+            
+        }
     }
 
     override func tableView(_ tableView: UITableView, moveRowAt sourceIndexPath: IndexPath, to destinationIndexPath: IndexPath) {

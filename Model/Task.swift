@@ -3,6 +3,7 @@ import Foundation
 enum TaskPriority {
     case normal
     case important
+    case backlog
 }
 
 enum TaskStatus: Int {

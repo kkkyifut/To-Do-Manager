@@ -7,7 +7,8 @@ class TaskTypeController: UITableViewController {
     var doAfterTypeSelected: ((TaskPriority) -> Void)?
     private var taskTypesInformation: [TypeCellDescription] = [
         (type: .important, title: "Важная", description: "Такой тип задач является наиболее приоритетным для выполнения. Все важные задачи выводятся в самом верху списка задач"),
-        (type: .normal, title: "Текущая", description: "Задача с обычным приоритетом")
+        (type: .normal, title: "Текущая", description: "Задача с обычным приоритетом"),
+        (type: .backlog, title: "Общая", description: "Задача в бэклоге, которая не требует немедленного выполнения"),
     ]
 
     override func viewDidLoad() {

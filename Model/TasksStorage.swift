@@ -24,7 +24,14 @@ class TasksStorage: TasksStorageProtocol {
                   let statusRaw = task[TaskKey.status.rawValue] else {
                 continue
             }
-            let type: TaskPriority = (typeRaw == "important") ? .important : .normal
+            var type: TaskPriority
+            if typeRaw == "important" {
+                type = .important
+            } else if typeRaw == "normal" {
+                type = .normal
+            } else {
+                type = .backlog
+            }
             let status: TaskStatus = (statusRaw == "planned") ? .planned : .completed
             resultTasks.append(Task(title: title, type: type, status: status))
         }
@@ -36,7 +43,13 @@ class TasksStorage: TasksStorageProtocol {
         tasks.forEach { task in
             var newElementForStorage: Dictionary<String, String> = [:]
             newElementForStorage[TaskKey.title.rawValue] = task.title
-            newElementForStorage[TaskKey.type.rawValue] = (task.type == .important) ? "important" : "normal"
+            if task.type == .important {
+                newElementForStorage[TaskKey.type.rawValue] = "important"
+            } else if task.type == .normal {
+                newElementForStorage[TaskKey.type.rawValue] = "normal"
+            } else {
+                newElementForStorage[TaskKey.type.rawValue] = "backlog"
+            }
             newElementForStorage[TaskKey.status.rawValue] = (task.status == .planned) ? "planned" : "completed"
             arrayForStorage.append(newElementForStorage)
         }

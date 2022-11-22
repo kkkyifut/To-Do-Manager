@@ -8,7 +8,8 @@ class TaskEditController: UITableViewController {
 
     private var taskTitles: [TaskPriority:String] = [
         .important: "Важная",
-        .normal: "Текущая"
+        .normal: "Текущая",
+        .backlog: "Общая",
     ]
 
     @IBOutlet var taskTitle: UITextField!
